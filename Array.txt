@@ -1,0 +1,19 @@
+Arrays (vetores)
+
+Conta[][] cc;
+int[] idade;
+int x =0;
+idade = new int[15]; //tamanho não pode ser alterado uma vez definido.
+
+idade [0] = 1;
+idade [1] = 2;
+idade [2] = 4;
+    *
+    *
+    *
+idade[14] = 10;
+
+for(x=0; x<=14; x++) {
+  System.out.println(idade[x]);
+}
+
