@@ -1,0 +1,28 @@
+/*
+ * @author: Dowglas Rodrigo R de Barros | N1113G1 
+   @author: Gabriel Tavares de Souza | T2354C5
+ */
+
+/*
+ *	Informações de criação do Banco e tabela funcionario.
+ */
+
+CREATE DATABASE Exercicio5;
+
+USE Exercicio5;
+
+-- cria a tabela
+
+CREATE TABLE funcionario (
+   Nome varchar (50) NOT NULL,
+   Area varchar (50) NOT NULL,
+   PRIMARY KEY (Nome)
+);
+
+
+-- Inserir funcionarios para teste
+
+INSERT INTO funcionario (Nome,Area) VALUES ('Nome 1','Area numero 1');
+INSERT INTO funcionario (Nome,Area) VALUES ('Nome 2','Area numero 2');
+INSERT INTO funcionario (Nome,Area) VALUES ('Nome 3','Area numero 3');
+INSERT INTO funcionario (Nome,Area) VALUES ('Nome 4','Area numero 4');
