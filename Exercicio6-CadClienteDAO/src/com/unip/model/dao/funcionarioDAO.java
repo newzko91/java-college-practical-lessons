@@ -54,8 +54,8 @@ public class funcionarioDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("DELETE FROM funcionario WHERE Nome = ?");
-            stmt.setString(1, f.getNome());
+            stmt = con.prepareStatement("DELETE FROM funcionario WHERE ID = ?");
+            stmt.setInt(1, f.getID());
 
             stmt.executeUpdate();
 
@@ -89,7 +89,8 @@ public class funcionarioDAO {
             while (rs.next()) {
 
                 funcionario funcionario = new funcionario();
-
+                
+                funcionario.setID(rs.getInt("ID"));
                 funcionario.setNome(rs.getString("Nome"));
                 funcionario.setArea(rs.getString("Area"));
                 funcionarios.add(funcionario);
@@ -116,9 +117,11 @@ public class funcionarioDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("UPDATE funcionario SET Area = ? WHERE Nome = ?");
-            stmt.setString(1, f.getArea());
-            stmt.setString(2, f.getNome());
+            stmt = con.prepareStatement("UPDATE funcionario SET Nome = ?, Area = ? WHERE ID = ?");
+            stmt.setString(1, f.getNome());
+            stmt.setString(2, f.getArea());
+            stmt.setInt(3, f.getID());
+            
 
             stmt.executeUpdate();
 

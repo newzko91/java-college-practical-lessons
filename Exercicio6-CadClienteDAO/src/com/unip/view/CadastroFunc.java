@@ -33,8 +33,6 @@ public class CadastroFunc extends JFrame {
 		initComponents();
 		lerTabela();
 		
-		
-		
 	}
 	
 	
@@ -53,12 +51,12 @@ public class CadastroFunc extends JFrame {
 
 	            },
 	            new String [] {
-	                "NOME", "AREA"
+	                "ID", "NOME", "AREA"
 	             }
 	        ) {
 				private static final long serialVersionUID = 1L;
 				boolean[] canEdit = new boolean [] {
-	                false, false
+	                false, false, false
 	            };
 
 	            public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -134,6 +132,7 @@ public class CadastroFunc extends JFrame {
 	       for (funcionario f : func.read()) {
 
 	            modelo.addRow(new Object[]{
+	            	    f.getID(),
 	                f.getNome(),
 	                f.getArea()
 	            });
@@ -146,8 +145,8 @@ public class CadastroFunc extends JFrame {
 	private void tableMouseClicked(java.awt.event.MouseEvent evt) {
         if (table.getSelectedRow() != -1) {
         		
-        		txtNome.setText(table.getValueAt(table.getSelectedRow(), 0).toString());  
-        		txtArea.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
+        		txtNome.setText(table.getValueAt(table.getSelectedRow(), 1).toString());  
+        		txtArea.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
         }
 
     }
@@ -156,8 +155,8 @@ public class CadastroFunc extends JFrame {
 
         if (table.getSelectedRow() != -1) {
         		
-        	txtNome.setText(table.getValueAt(table.getSelectedRow(), 0).toString());
-    		txtArea.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
+        	txtNome.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
+    		txtArea.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
 
         }
 
@@ -186,7 +185,7 @@ public class CadastroFunc extends JFrame {
         	   funcionario f = new funcionario();
            funcionarioDAO dao = new funcionarioDAO();
 
-            f.setNome((String) table.getValueAt(table.getSelectedRow(), 0));
+            f.setID((int) table.getValueAt(table.getSelectedRow(), 0));
             
             dao.excluir(f);
            
@@ -196,7 +195,7 @@ public class CadastroFunc extends JFrame {
             lerTabela();
 
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione um produto para excluir.");
+            JOptionPane.showMessageDialog(null, "Selecione um funcionario para excluir.");
         }
 
 
@@ -211,6 +210,7 @@ public class CadastroFunc extends JFrame {
 
             f.setArea(txtArea.getText());
             f.setNome(txtNome.getText());
+            f.setID((int) table.getValueAt(table.getSelectedRow(), 0));
             dao.alterar(f);
 
             txtNome.setText("");

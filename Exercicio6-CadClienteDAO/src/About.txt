@@ -14,9 +14,10 @@ USE Exercicio5;
 -- cria a tabela
 
 CREATE TABLE funcionario (
+   ID int(5) AUTO_INCREMENT,
    Nome varchar (50) NOT NULL,
    Area varchar (50) NOT NULL,
-   PRIMARY KEY (Nome)
+   PRIMARY KEY (ID)
 );
 
 
